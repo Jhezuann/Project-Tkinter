@@ -49,19 +49,19 @@ def volver():
 #Frame
 frame2=Frame(wn2)
 frame2.pack()
-frame2.config(width=340, height=480)#, bg="cyan")
+frame2.config(width=340, height=480, bg="cyan")
 
 #Label
-titulo=Label(frame2, text="Register", font=("Verdana", 20))
+titulo=Label(frame2, text="Register", font=("Verdana", 20), bg="cyan")
 titulo.grid(column=0,row=0, columnspan=2)
 
-nombreLabel=Label(frame2, text="Nombre:")
+nombreLabel=Label(frame2, text="Nombre:", bg="cyan")
 nombreLabel.grid(column=0,row=1)
 
-passLabel=Label(frame2, text="Contraseña:")
+passLabel=Label(frame2, text="Contraseña:", bg="cyan")
 passLabel.grid(column=0,row=2)
 
-passLabel=Label(frame2, text="Apodo:")
+passLabel=Label(frame2, text="Apodo:", bg="cyan")
 passLabel.grid(column=0,row=3)
 
 #Entry
@@ -84,4 +84,5 @@ registrar.grid(column=0,row=4, columnspan=2)
 volver=Button(frame2, text="Volver", command=volver)
 volver.grid(column=0,row=5, columnspan=2)
 
-wn2.mainloop()
+if __name__ == "__main__":
+    wn2.mainloop()

@@ -6,7 +6,6 @@ import psycopg2
 wn=Tk()
 wn.title("Login")
 wn.iconbitmap("img/logo.ico")
-wn.geometry("340x480")
 
 #----
 conn = psycopg2.connect(
@@ -26,7 +25,9 @@ def ingresar():
     else:
         cur.execute("SELECT * FROM register WHERE name=%s AND password=%s", (nombreUsuario.get(), contraseñaUsuario.get()))
         if cur.fetchone():
-            messagebox.showinfo("Login", "Usuario correcto")
+            wn.destroy()
+            import ventanaA
+            messagebox.showinfo("Login", "Usuario correcto, CONECTADO")
             borrarCampos()
         else:
             messagebox.showinfo("Error", "Usuario o contraseña incorrecto")
@@ -43,16 +44,16 @@ def borrarCampos():
 #Frame
 frame=Frame(wn)
 frame.pack()
-frame.config(width=720, height=480, bg="cyan")
+frame.config(width=10, height=10, bg="cyan")
 
 #Label
-titulo=Label(frame, text="Login", font=("Verdana", 20))
+titulo=Label(frame, text="Login", font=("Verdana", 20), bg="cyan")
 titulo.grid(column=0,row=0, columnspan=2)
 
-nombreLabel=Label(frame, text="Nombre:")
+nombreLabel=Label(frame, text="Nombre:", bg="cyan")
 nombreLabel.grid(column=0,row=1)
 
-passLabel=Label(frame, text="Contraseña:")
+passLabel=Label(frame, text="Contraseña:", bg="cyan")
 passLabel.grid(column=0,row=2)
 
 #Entry
