@@ -1,13 +1,18 @@
 from tkinter import *
 from math import *
+
+w4=Tk()
+w4.title("CALCULADORA")
+w4.geometry("392x600")
+w4.configure(background="SkyBlue4")
+color_boton=("gray77")
  
-#VISUALIZAR LA OPERACION EN LA PANTALLA
+#Funciones
 def btnClik(num):
     global operador
     operador=operador+str(num)
     input_text.set(operador)
- 
-#CÁLCULO Y MUESTRA DE RESULTADOS.
+
 def resultado():
     global operador
     try:
@@ -16,20 +21,16 @@ def resultado():
     except:
         input_text.set("ERROR")
     operador = ""
- 
-#LIMPIEZA DE PANTALLA.
+
 def clear():
     global operador
     operador=("")
     input_text.set("0")
- 
- 
-w4=Tk()
-w4.title("CALCULADORA")
-w4.geometry("392x600")
-w4.configure(background="SkyBlue4")
-color_boton=("gray77")
- 
+
+def salir():
+    w4.destroy()
+    import ventanaA
+
 ancho_boton=11
 alto_boton=3
 input_text=StringVar()
@@ -64,6 +65,7 @@ Button(w4,text="ln",bg=color_boton,width=ancho_boton,height=alto_boton,command=l
 Button(w4,text="C",bg=color_boton,width=ancho_boton,height=alto_boton,command=clear).place(x=107,y=420)
 Button(w4,text="EXP",bg=color_boton,width=ancho_boton,height=alto_boton,command=lambda:btnClik("**")).place(x=197,y=420)
 Button(w4,text="=",bg=color_boton,width=ancho_boton,height=alto_boton,command=resultado).place(x=287,y=420)
+Button(w4, text="Salir",bg=color_boton,width=ancho_boton,height=alto_boton,command=salir).place(x=150,y=540)
  
 clear()
  

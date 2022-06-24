@@ -6,6 +6,9 @@ import psycopg2
 wn=Tk()
 wn.title("Login")
 wn.iconbitmap("img/logo.ico")
+wn.geometry("250x300")
+wn.resizable(0,0)
+wn.config(bg="cyan")
 
 #----
 conn = psycopg2.connect(
@@ -40,37 +43,58 @@ def registrar():
 def borrarCampos():
     nombreUsuario.set("")
     contraseñaUsuario.set("")
+
+def salir():
+    wn.destroy()
     
-#Frame
-frame=Frame(wn)
-frame.pack()
-frame.config(width=10, height=10, bg="cyan")
-
 #Label
-titulo=Label(frame, text="Login", font=("Verdana", 20), bg="cyan")
-titulo.grid(column=0,row=0, columnspan=2)
+titulo=Label(wn, text="Login", font=("Verdana", 20), bg="cyan")
+titulo.grid(column=1,row=0, columnspan=2)
 
-nombreLabel=Label(frame, text="Nombre:", bg="cyan")
-nombreLabel.grid(column=0,row=1)
+#espacio entre lineas
+espacio1=Label(wn, text="", bg="cyan")
+espacio1.grid(column=1,row=1)
 
-passLabel=Label(frame, text="Contraseña:", bg="cyan")
-passLabel.grid(column=0,row=2)
+nombreLabel=Label(wn, text="Nombre:", bg="cyan")
+nombreLabel.grid(column=0,row=2)
+
+#espacio entre lineas
+espacio2=Label(wn, text="", bg="cyan")
+espacio2.grid(column=3,row=3)
+
+passLabel=Label(wn, text="Contraseña:", bg="cyan")
+passLabel.grid(column=0,row=4)
 
 #Entry
 nombreUsuario=StringVar()
-nombreEntry=Entry(frame, textvariable=nombreUsuario)
-nombreEntry.grid(column=1,row=1)
+nombreEntry=Entry(wn, textvariable=nombreUsuario)
+nombreEntry.grid(column=2,row=2)
 
 contraseñaUsuario=StringVar()
-passEntry=Entry(frame, textvariable=contraseñaUsuario, show="*")
-passEntry.grid(column=1,row=2)
+passEntry=Entry(wn, textvariable=contraseñaUsuario, show="*")
+passEntry.grid(column=2,row=4)
+
+#espacio entre lineas
+espacio3=Label(wn, text="", bg="cyan")
+espacio3.grid(column=1,row=5)
 
 #Botones
-iniciarSeccion=Button(frame, text="Iniciar sección", command=ingresar)
-iniciarSeccion.grid(column=0,row=3, columnspan=2)
+iniciarSeccion=Button(wn, text="Iniciar sección", command=ingresar)
+iniciarSeccion.grid(column=2,row=6)
 
-registrar=Button(frame, text="Registrar", command=registrar)
-registrar.grid(column=0,row=4, columnspan=2)
+#espacio entre lineas
+espacio4=Label(wn, text="", bg="cyan")
+espacio4.grid(column=1,row=7)
+
+registrar=Button(wn, text="Registrar", command=registrar)
+registrar.grid(column=2,row=8)
+
+#espacio entre lineas
+espacio5=Label(wn, text="", bg="cyan")
+espacio5.grid(column=1,row=9)
+
+salir=Button(wn, text="Salir", command=salir)
+salir.grid(column=2,row=10)
 
 if __name__ == "__main__":
     wn.mainloop()
