@@ -63,7 +63,7 @@ while not game_over:
 
     #colisiones
     if detectarColision(pos_jug, pos_Enemigo):
-        game_over=True
+        sys.exit()
         
 
     #Enemigo
